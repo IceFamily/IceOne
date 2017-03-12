@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xyz.dao.UserInfoDao">
+
+    
+    <!-- 定义的resultMap，可以解决类的属性名和数据库列名不一致的问题-->
+     <resultMap type="com.xyz.bean.UserInfo" id="userResultMap">
+        <result property="name" column="User_Name"  />
+        <result property="addr" column="User_Addr"  />
+        <result property="tel" column="User_TEL"  />
+    </resultMap> 
+    
+    <!-- 返回list的select语句，注意 resultMap的值是指向前面定义好的 -->
+    <select id="queryAllUser" resultMap="userResultMap">
+        select * from user_info
+    </select> 
+    
+   
+    </mapper>
